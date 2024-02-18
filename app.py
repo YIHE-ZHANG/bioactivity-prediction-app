@@ -65,13 +65,12 @@ with st.sidebar.header('1. Upload your CSV data'):
 """)
 
 if st.sidebar.button('Predict'):
-    load_data = pd.read_table(uploaded_file, sep=' ', header=None)
-    # Explicitly convert DataFrame columns to boolean data type
-    load_data = load_data.astype({column: bool for column in load_data.columns})
-    load_data.to_csv('molecule.smi', sep = '\t', header = False, index = False)
+    # load_data = pd.read_table(uploaded_file, sep=' ', header=None)
+    # load_data = load_data.astype({column: bool for column in load_data.columns})
+    # load_data.to_csv('molecule.smi', sep = '\t', header = False, index = False)
 
-    st.header('**Original input data**')
-    st.write(load_data)
+    # st.header('**Original input data**')
+    # st.write(load_data)
 
     with st.spinner("Calculating descriptors..."):
         desc_calc()
