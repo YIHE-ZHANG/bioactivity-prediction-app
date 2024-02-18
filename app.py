@@ -5,6 +5,7 @@ import subprocess
 import os
 import base64
 import pickle
+import gdown
 
 # Molecular descriptor calculator
 def desc_calc():
@@ -23,8 +24,13 @@ def filedownload(df):
 
 # Model building
 def build_model(input_data):
+    # Download and load the model
+    url = 'https://drive.google.com/uc?id=1TlEbv203Su8ooGJtvW7kqcHXW27HemW6'  # Replace FILE_ID with your actual file ID
+    output = 'acetylcholinesterase_model.pkl'
+    gdown.download(url, output, quiet=False)
+    load_model = pickle.load(open(output, 'rb'))
     # Reads in saved regression model
-    load_model = pickle.load(open('acetylcholinesterase_model.pkl', 'rb'))
+    # load_model = pickle.load(open('acetylcholinesterase_model.pkl', 'rb'))
     # Apply model to make predictions
     prediction = load_model.predict(input_data)
     st.header('**Prediction output**')
